@@ -9,7 +9,8 @@
 #start hostname
  
 apt-get -y update
-apt-get -y upgrade
+#Este lo documente porque no se si pudiera afectar
+#apt-get -y upgrade
 apt-get -y install libsdl-ttf2.0-0:amd64 gcc-4.6-base:amd64 cpp-4.6 dkms gcc-4.6 linux-headers-amd64 linux-kbuild-3.2
 
 #apt-get -y install zlib1g-dev libssl-dev libreadline-gplv2-dev libyaml-dev
