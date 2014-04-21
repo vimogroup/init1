@@ -68,9 +68,10 @@ cat > /home/vm/Vagrantfile <<EOF
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+####Esto va en el encabezado
 require 'yaml'
 servers = YAML::load_file('servers.yaml')
- 
+
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
@@ -80,20 +81,40 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
 
-
-
- # Every Vagrant virtual environment requires a box to build off of.
-  #config.vm.box = "precise32"
+  # Every Vagrant virtual environment requires a box to build off of.
+ # config.vm.box = "precise32"
 
 	servers.each do |servers|
 	    config.vm.define servers["name"] do |serv|
 		serv.vm.box = servers["box"]
 		serv.vm.hostname = servers["hostname"]
+
+		serv.vm.provider "virtualbox" do |v|
+
+	#           v.customize ["modifyvm", :id, "--ioapic", "on"]
+	#           v.memory = 64
+	#           v.cpus = servers["cpu"]
+
+	#            v.customize ["modifyvm", :id, "--ioapic", "on"]
+		    v.customize ["modifyvm", :id, "--memory", servers["ram"]]
+		    v.customize ["modifyvm", :id, "--cpus", servers["cpu"]]
+
+	#	    v.customize ["modifyvm", :id, "--ioapic", "on"]
+
+
+		 end
+
+
 		serv.vm.network "private_network", ip: servers["ip"]
+
+	       serv.vm.synced_folder "v-root/", "/home/vm/share", create: true
+
+
 	    end
 	end
 
 end
+
 
 EOF
 
@@ -109,12 +130,18 @@ cat > /home/vm/servers.yaml <<EOF
 - name: debian
   hostname: sr1.vmbrokers.org
   box: vmdebian
-  ram: 128
+  ram: 64
   cpu: 1
   ip: 10.0.2.101
   environment: staging
 
 EOF
+
+vagrant box list
+
+#vamos a reiniciar el sistema, porque la parecer no funciona si no se hace esto
+
+reboot
 
 vagrant up
 
