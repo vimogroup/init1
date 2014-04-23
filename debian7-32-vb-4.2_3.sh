@@ -60,6 +60,8 @@ vagrant box list
 
 #Ahora vamos a actualizar a la ultima version:
 
+rm /usr/share/virtualbox/VBoxGuestAdditions.iso
+
 wget https://www.virtualbox.org/download/testcase/VBoxGuestAdditions_4.3.11-93070.iso‌​ sudo cp VBoxGuestAdditions_4.3.11-93070.iso /usr/share/virtualbox/VBoxGuestAdditions.iso
 
 
