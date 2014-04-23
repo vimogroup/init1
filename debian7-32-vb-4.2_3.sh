@@ -58,13 +58,15 @@ vagrant box list
 
 #plugins
 
-#Vamos a instalar el plugin pero actualizando a la ultima version:
-
-vagrant plugin install vagrant-vbguest
-
 #Ahora vamos a actualizar a la ultima version:
 
 wget https://www.virtualbox.org/download/testcase/VBoxGuestAdditions_4.3.11-93070.iso‌​ sudo cp VBoxGuestAdditions_4.3.11-93070.iso /usr/share/virtualbox/VBoxGuestAdditions.iso
+
+
+
+#Vamos a instalar el plugin pero actualizando a la ultima version:
+
+vagrant plugin install vagrant-vbguest
 
 
 
