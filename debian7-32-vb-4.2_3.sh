@@ -144,7 +144,7 @@ cat > /home/vm/servers.yaml <<EOF
 - name: debian
   hostname: sr1.vmbrokers.org
   box: vmdebian
-  ram: 64
+  ram: 256
   cpu: 1
   ip: 10.0.2.101
   environment: staging
