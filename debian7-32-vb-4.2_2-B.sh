@@ -58,11 +58,11 @@ vagrant box list
 
 #plugins
 
-vagrant plugin install vagrant-vbguest
+#vagrant plugin install vagrant-vbguest
 
-vagrant plugin install vagrant-hostsupdater
+#vagrant plugin install vagrant-hostsupdater
 
-vagrant plugin install landrush
+#vagrant plugin install landrush
 
 #vamos a crear los archivos de configuracion
 
@@ -95,8 +95,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	servers.each do |servers|
 	    config.vm.define servers["name"] do |serv|
 	        
-	        serv.landrush.enable
-		      serv.vm.box = servers["box"]
+	       # serv.landrush.enable
+		serv.vm.box = servers["box"]
 	      	serv.vm.hostname = servers["hostname"]
 
 		     serv.vm.provider "virtualbox" do |v|
@@ -117,9 +117,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     		serv.vm.network "private_network", ip: servers["ip"]
 
-         serv.landrush.host servers["hostname"], servers["ip"]
+         #serv.landrush.host servers["hostname"], servers["ip"]
 
-	       serv.vm.synced_folder "v-root/", "/home/vm/share", create: true
+	  #     serv.vm.synced_folder "v-root/", "/home/vm/share", create: true
 
 
 	    end
