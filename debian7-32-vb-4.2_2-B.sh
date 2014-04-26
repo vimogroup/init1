@@ -44,7 +44,7 @@ dpkg -i vagrant_1.3.5_x86_64.deb
 #Instalamos varios sis
 
 
-#   vagrant box add precise32 http://files.vagrantup.com/precise32.box
+   vagrant box add precise32 http://files.vagrantup.com/precise32.box
  
    vagrant box add vmdebian http://puppet-vagrant-boxes.puppetlabs.com/debian-73-i386-virtualbox-puppet.box  
 
